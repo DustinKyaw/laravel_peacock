@@ -56,7 +56,7 @@ $single_master=Config::get('app_config.blade.single_master');
                                 <div class="card-block">
                                     <div class="media">
                                         <div class="media-body text-xs-left">
-                                            <h3 class="deep-orange">10</h3>
+                                            <h3 class="deep-orange">{{$package_count}}</h3>
                                             <span>Packages</span>
                                         </div>
                                         <div class="media-right media-middle">

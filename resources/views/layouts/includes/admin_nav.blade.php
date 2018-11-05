@@ -35,33 +35,40 @@
     <div class="main-menu-content">
         <ul id="main-menu-navigation" data-menu="menu-navigation" class="navigation navigation-main">
 
-            <li class="{{(Request::segment(1)=='dashboard') ? 'active' : 'unactive'}} nav-item">
+            <li class="nav-item">
                 <a href="{{ URL::to('user/dashboard') }}">
                     <i class="icon-dashboard2"></i>
                     <span data-i18n="nav.dash.main" class="menu-title">Dashboard</span>
                 </a>
             </li>
-            <li class="{{(Request::segment(1)=='requestlist') ? 'active' : 'unactive'}} nav-item">
+            <li class="nav-item">
                 <a href="{{ URL::to('') }}">
                     <i class="icon-user"></i>
                     <span data-i18n="nav.dash.main" class="menu-title">Users</span>
                 </a>
             </li>
-            <li class="{{(Request::segment(1)=='paidlist') ? 'active' : 'unactive'}} nav-item">
+            <li class="nav-item">
                 <a href="{{ URL::to('user/packages') }}">
                     <i class="icon-list"></i>
                     <span data-i18n="nav.dash.main" class="menu-title">Packages List</span>
                 </a>
             </li>
 
-            <li class="{{(Request::segment(1)=='category') ? 'active' : 'unactive'}} nav-item">
+            <li class="nav-item">
                 <a href="{{ URL::to('category') }}">
                     <i class="icon-bookmark"></i>
-                    <span data-i18n="nav.dash.main" class="menu-title">Rental List</span>
+                    <span data-i18n="nav.dash.main" class="menu-title">Request List</span>
                 </a>
             </li>
 
-            <li class="{{(Request::segment(1)=='export') ? 'active' : 'unactive'}} nav-item">
+            <li class="nav-item">
+                <a href="{{ URL::to('user/services') }}">
+                    <i class="icon-box"></i>
+                    <span data-i18n="nav.dash.main" class="menu-title">Service List</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a href="{{ URL::to('export') }}">
                     <i class="icon-book3"></i>
                     <span data-i18n="nav.dash.main" class="menu-title">Booking List</span>

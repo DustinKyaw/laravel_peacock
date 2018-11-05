@@ -26,10 +26,10 @@ class PackageController
 
     function create(){
         $data = Input::get();
-
+        //dd($data);
         $res = $this->package->create_package($data);
         if ($res){
-            return view('layouts/admin/packages', ['message' => 'Package Created']);
+            return redirect()->back();
         }
 
     }

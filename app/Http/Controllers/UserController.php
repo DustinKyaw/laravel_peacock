@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 
+use App\ServiceModels\PackageModel;
 use App\ServiceModels\UserModel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -18,10 +19,16 @@ class UserController
     public function __construct()
     {
         $this->user = new UserModel();
+        $this->package = new PackageModel();
     }
 
     function index(){
         return view('layouts/admin/login_view');
+    }
+
+    function dashboard(){
+        $data['package_count'] = $this->package->get_packages_count();
+        return view('layouts/admin/dashboard')->with($data);
     }
 
 
@@ -38,5 +45,6 @@ class UserController
             return redirect('user/dashboard');
         }
     }
+
 
 }

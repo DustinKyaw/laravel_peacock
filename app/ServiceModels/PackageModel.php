@@ -21,11 +21,18 @@ class PackageModel
         $package->description = $data['desc'];
         $package->route = $data['routes'];
         $package->amount = $data['amount'];
+        $package->start_date = $data['start_date'];
+        $package->end_date = $data['end_date'];
         return $package->save();
     }
 
     function get_packages(){
         $data = Package::get()->toArray();
+        return $data;
+    }
+
+    function get_packages_count(){
+        $data = Package::get()->count();
         return $data;
     }
 

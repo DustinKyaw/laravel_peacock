@@ -21,13 +21,15 @@ Route::get('user/login', 'UserController@index');
 Route::post('user/login', 'UserController@login');
 
 
-Route::get('user/dashboard', function (){
-
-    return view('layouts/admin/dashboard');
-});
+Route::get('user/dashboard', 'UserController@dashboard');
 
 
 Route::get('user/packages', 'PackageController@index');
 
 Route::post('user/create_package', 'PackageController@create');
 
+Route::get('user/services', 'ServiceController@index');
+
+Route::post('user/create_service', 'ServiceController@create');
+
+Route::post('user/update_service', 'ServiceController@update');

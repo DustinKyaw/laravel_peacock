@@ -5,6 +5,7 @@ $single_master=Config::get('app_config.blade.single_master');
 @extends($single_master)
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('plugin/datatables/css/jquery.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('plugin/datepicker/bootstrap-datepicker.min.css')}}">
 
 @endsection
 @section('content')
@@ -14,12 +15,6 @@ $single_master=Config::get('app_config.blade.single_master');
             <div class="content-header row">
             </div>
             <div class="content-body">
-
-                @if(!empty($message))
-                    <div class="alert alert-success" role="alert">
-                        {{$message}}
-                    </div>
-                @endif
 
                 <div class="card">
                     <div class="card-header">
@@ -53,6 +48,22 @@ $single_master=Config::get('app_config.blade.single_master');
                                                 <textarea class="form-control" name="routes" id="inp_long_desc" rows="6" required></textarea>
                                             </div>
 
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class='form-group'>
+                                                        <label class='control-label' for='start_date'>From</label>
+                                                        <input class='form-control' name="start_date"  id="start_date" size="16"   value="" readonly>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class='form-group'>
+                                                        <label class='control-label' for='end_date'>To</label>
+                                                        <input class='form-control' name="end_date"  id="end_date" size="16"   value="" readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+
 
 
                                             <div class="row">
@@ -84,7 +95,8 @@ $single_master=Config::get('app_config.blade.single_master');
                                     <table id="package" class="display nowrap" cellspacing="0" width="100%">
                                         <thead>
                                         <th>Title</th>
-                                        <th>Description</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
                                         <th>Amount</th>
                                         <th>Details</th>
                                         </thead>
@@ -92,7 +104,8 @@ $single_master=Config::get('app_config.blade.single_master');
                                         @foreach($package as $value)
                                         <tr>
                                             <td>{{$value['title']}}</td>
-                                            <td>{{substr($value['description'],0,100)}}</td>
+                                            <td>{{$value['start_date']}}</td>
+                                            <td>{{$value['end_date']}}</td>
                                             <td>{{$value['amount']}}</td>
                                             <td >
                                                 <a href="#" class="btn btn-xs btn-info pull-right">Details</a>
@@ -122,6 +135,7 @@ $single_master=Config::get('app_config.blade.single_master');
 @section('script')
 
     <script type="text/javascript" src="{{ URL::asset('plugin/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('plugin/datepicker/bootstrap-datepicker.js') }}"></script>
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -131,6 +145,27 @@ $single_master=Config::get('app_config.blade.single_master');
 
             });
         });
+
+
+        $( document ).ready(function() {
+            $('#start_date').datepicker({
+                date: '18/08/2018',
+                'bootcssVer': 4,
+                format: "dd/mm/yyyy",
+                autoclose: true,
+                todayBtn: true
+            });
+        });
+        $( document ).ready(function() {
+            $('#end_date').datepicker({
+                date: '18/08/2018',
+                'bootcssVer': 4,
+                format: "dd/mm/yyyy",
+                autoclose: true,
+                todayBtn: true
+            });
+        });
+
     </script>
 
 @endsection
