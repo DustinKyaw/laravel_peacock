@@ -8,8 +8,9 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Http\Request;
 use App\ServiceModels\PackageModel;
+use App\ServiceModels\ServiceModel;
 use Illuminate\Support\Facades\Input;
 
 class PackageController
@@ -17,10 +18,12 @@ class PackageController
     function __construct()
     {
         $this->package = new PackageModel();
+        $this->service = new ServiceModel();
     }
 
     function index(){
         $res['package']= $this->package->get_packages();
+        $res['service']= $this->service->get_services();
         return view('layouts/admin/packages')->with($res);
     }
 
@@ -32,6 +35,31 @@ class PackageController
             return redirect()->back();
         }
 
+    }
+
+
+    function delete($id){
+        $res = $this->package->delete_package($id);
+        if ($res){
+            return redirect()->back();
+        }
+    }
+
+    function display($id){
+        $data['service']= $this->service->get_services();
+        $data['package'] = $this->package->search_by_id($id);
+        if ($data['package']){
+            return view('layouts/admin/package_details')->with($data);
+        }
+    }
+
+    function edit($id){
+        $data = Input::get();
+        $data['id'] = $id;
+        $res = $this->package->edit_package($data);
+        if ($res){
+            return redirect('user/packages');
+        }
     }
 
 

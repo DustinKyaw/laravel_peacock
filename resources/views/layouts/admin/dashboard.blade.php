@@ -40,7 +40,7 @@ $single_master=Config::get('app_config.blade.single_master');
                                     <div class="media">
                                         <div class="media-body text-xs-left">
                                             <h3 class="teal">10</h3>
-                                            <span>Rental Car List</span>
+                                            <span>Custom Request List</span>
                                         </div>
                                         <div class="media-right media-middle">
                                             <i class="icon-car red font-large-2 float-xs-right"></i>

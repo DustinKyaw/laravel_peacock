@@ -25,4 +25,27 @@ class UserModel
         }
     }
 
+    function get_all_user(){
+        $res = User::get()->toArray();
+        return $res;
+    }
+
+    function create_user($data){
+        $user = new User();
+        $user->name = $data['user_name'];
+        $user->email = $data['user_email'];
+        $user->password = sha1($data['user_password']);
+        return $user->save();
+    }
+
+
+    function edit_user($data){
+        $user = User::where('id', $data['user_id'])->get()->first();
+        $user->email = $data['email'];
+        $user->password = sha1($data['password']);
+        return $user->save();
+    }
+
+
+
 }

@@ -15,6 +15,8 @@ class PackageModel
 {
     function create_package($data){
         //dd($data);
+        $services = implode(',', $data['services']);
+
         $package = new Package();
         $package->id = bin2hex(random_bytes(16));
         $package->title = $data['title'];
@@ -23,17 +25,44 @@ class PackageModel
         $package->amount = $data['amount'];
         $package->start_date = $data['start_date'];
         $package->end_date = $data['end_date'];
+        $package->services = $services;
         return $package->save();
     }
 
     function get_packages(){
-        $data = Package::get()->toArray();
+        $data = Package::where('status', 1)->get()->toArray();
         return $data;
     }
 
     function get_packages_count(){
-        $data = Package::get()->count();
+        $data = Package::where('status', 1)->get()->count();
         return $data;
     }
+
+    function delete_package($id){
+        $package = Package::where('id', $id)->get()->first();
+        $package->status = 0;
+        return $package->save();
+    }
+
+    function search_by_id($id){
+        $res = Package::where('id', $id)->first();
+        return $res;
+    }
+
+    function edit_package($data){
+        $package = Package::where('id', $data['id'])->get()->first();
+        $services = implode(',', $data['services']);
+        $package->title = $data['title'];
+        $package->description = $data['desc'];
+        $package->route = $data['routes'];
+        $package->amount = $data['amount'];
+        $package->start_date = $data['start_date'];
+        $package->end_date = $data['end_date'];
+        $package->services = $services;
+
+        return $package->save();
+    }
+
 
 }

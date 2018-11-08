@@ -31,7 +31,7 @@ $single_master=Config::get('app_config.blade.single_master');
 
                                                 </div>
 
-                                                    <button type="submit" class="btn btn-primary">Create</button>
+                                                    <button type="submit" class="btn btn-outline-success">Create</button>
                                             </div>
                                             </form>
                                         </div>
@@ -65,7 +65,7 @@ $single_master=Config::get('app_config.blade.single_master');
                                                             <td>{{$value['name']}}</td>
                                                             <td>
 
-                                                                <button class="btn btn-primary btn-md" data-toggle="modal"
+                                                                <button class="btn btn-outline-success btn-md" data-toggle="modal"
                                                                         data-target="#updatemodal{{$value['id'] }}">
                                                                     <i class="icon-pencil22"></i>
 
@@ -93,11 +93,11 @@ $single_master=Config::get('app_config.blade.single_master');
 
                                                                         <input type="hidden" name="service_id" value="{{$value['id']}}">
 
-                                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                                        <button type="submit" class="btn btn-success">Update</button>
                                                                     </div>
                                                                     </form>
                                                                     <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Close
+                                                                        <button type="button" class="btn btn-red" data-dismiss="modal">Close
                                                                         </button>
                                                                     </div>
                                                                 </div>

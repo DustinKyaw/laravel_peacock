@@ -7,7 +7,7 @@
                 </li>
                 <li class="nav-item">
                     <img alt="branding logo" src="{{ URL::asset('images/icons/nav_logo.png') }}" data-expand="{{ URL::asset('images/icons/nav_logo.png') }}"
-                         data-collapse="{{ URL::asset('images/icons/') }}" class="brand-logo">
+                         data-collapse="{{ URL::asset('images/icons/nav_mini.svg') }}" class="brand-logo mt-1">
                 </li>
                 <li class="nav-item hidden-md-up float-xs-right">
                     <a data-toggle="collapse" data-target="#navbar-mobile" class="nav-link open-navbar-container">
@@ -42,12 +42,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ URL::to('') }}">
-                    <i class="icon-user"></i>
-                    <span data-i18n="nav.dash.main" class="menu-title">Users</span>
-                </a>
-            </li>
-            <li class="nav-item">
                 <a href="{{ URL::to('user/packages') }}">
                     <i class="icon-list"></i>
                     <span data-i18n="nav.dash.main" class="menu-title">Packages List</span>
@@ -55,7 +49,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ URL::to('category') }}">
+                <a href="{{ URL::to('user/request') }}">
                     <i class="icon-bookmark"></i>
                     <span data-i18n="nav.dash.main" class="menu-title">Request List</span>
                 </a>
@@ -69,14 +63,21 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ URL::to('export') }}">
+                <a href="{{ URL::to('user/booking') }}">
                     <i class="icon-book3"></i>
                     <span data-i18n="nav.dash.main" class="menu-title">Booking List</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="{{ URL::to('logout') }}">
+                <a href="{{ URL::to('user/user_profile') }}">
+                    <i class="icon-user"></i>
+                    <span data-i18n="nav.dash.main" class="menu-title">Admin Account</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{ URL::to('user/logout') }}">
                     <i class="icon-power-off"></i>
                     <span data-i18n="nav.dash.main" class="menu-title">LogOut</span>
                 </a>

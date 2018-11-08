@@ -8,7 +8,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\ServiceModels\PackageModel;
 use App\ServiceModels\UserModel;
 use Illuminate\Support\Facades\Input;
@@ -45,6 +44,30 @@ class UserController
             return redirect('user/dashboard');
         }
     }
+
+    function show(){
+        $data['user'] = $this->user->get_all_user();
+        return view('layouts/admin/admin_profile')->with($data);
+    }
+
+    function create(){
+        $data = Input::get();
+
+        $res = $this->user->create_user($data);
+        if ($res){
+            return redirect()->back();
+        }
+    }
+
+    function edit(){
+        $data = Input::get();
+
+        $res = $this->user->edit_user($data);
+        if ($res){
+            return redirect('user/logout');
+        }
+    }
+
 
 
 }

@@ -13,8 +13,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Package extends Model
 {
+    public $incrementing = false;
     protected $table= "packages";
-    protected $fillable =['id', 'title', 'description', 'route', 'amount', 'start_date', 'end_date'];
+    protected $fillable =['id', 'title', 'description', 'route', 'amount', 'start_date', 'end_date', 'services', 'status'];
 
 
 }

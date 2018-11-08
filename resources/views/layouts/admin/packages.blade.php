@@ -1,6 +1,8 @@
 <?php
 $single_master=Config::get('app_config.blade.single_master');
 //dd($package);
+//$s = explode(",", $package[0]['route']);
+//dd($s);
 ?>
 @extends($single_master)
 @section('css')
@@ -51,14 +53,14 @@ $single_master=Config::get('app_config.blade.single_master');
                                             <div class="row">
                                                 <div class="col-md-3">
                                                     <div class='form-group'>
-                                                        <label class='control-label' for='start_date'>From</label>
+                                                        <label class='control-label' for='start_date'>Start Date</label>
                                                         <input class='form-control' name="start_date"  id="start_date" size="16"   value="" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-3">
                                                     <div class='form-group'>
-                                                        <label class='control-label' for='end_date'>To</label>
+                                                        <label class='control-label' for='end_date'>End Date</label>
                                                         <input class='form-control' name="end_date"  id="end_date" size="16"   value="" readonly>
                                                     </div>
                                                 </div>
@@ -72,6 +74,17 @@ $single_master=Config::get('app_config.blade.single_master');
                                                     <input type="text" id="inp_title" name="amount" class="form-control" required>
                                                 </div>
 
+                                            </div>
+
+                                            <div>
+                                                <label style="margin-top:20px">I would prefer these services</label>
+                                                <div class="form-check">
+                                                    @foreach($service as $value)
+                                                        <label class="form-check-label">
+                                                            <input type="checkbox" class="form-check-input" name="services[]" value="{{$value['name']}}"> {{$value['name']}}
+                                                        </label>
+                                                    @endforeach
+                                                </div>
                                             </div>
 
                                             <button style="margin-top: 20px" type="submit" class="btn btn-success">Create</button>
@@ -108,8 +121,8 @@ $single_master=Config::get('app_config.blade.single_master');
                                             <td>{{$value['end_date']}}</td>
                                             <td>{{$value['amount']}}</td>
                                             <td >
-                                                <a href="#" class="btn btn-xs btn-info pull-right">Details</a>
-                                                <a href="#"><button class="btn btn-danger btn-md" onclick="return confirm('Are you sure want to delete ? ')">Delete</button></a>
+                                                <a href="{{URL::to('user/packages/details/'.$value['id'])}}" class="btn btn-xs btn-info pull-right">Details</a>
+                                                <a href="{{URL::to('user/package_delete/'.$value['id'])}}"><button class="btn btn-danger btn-md" onclick="return confirm('Are you sure want to delete ? ')">Delete</button></a>
                                             </td>
                                         </tr>
                                         @endforeach
