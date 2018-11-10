@@ -11,9 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'UserController@home');
+
+Route::get('packages', 'PackageController@select_packages');
+
+Route::get('packages/{id}', 'PackageController@show_package');
+
+Route::post('packages/booking', 'BookingController@book');
+
+Route::get('request_package', 'RequestController@request');
+
+Route::post('request_package', 'RequestController@create');
+
+Route::get('contact_us', 'UserController@contact');
 
 
 Route::get('user/login', 'UserController@index');
@@ -53,3 +63,4 @@ Route::get('user/package_delete/{id}', 'PackageController@delete');
 Route::get('user/packages/details/{id}', 'PackageController@display');
 
 Route::post('user/packages/edit/{id}', 'PackageController@edit');
+

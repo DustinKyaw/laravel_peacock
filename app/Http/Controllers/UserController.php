@@ -21,6 +21,12 @@ class UserController
         $this->package = new PackageModel();
     }
 
+    function home(){
+        $data['package'] = $this->package->get_packages();
+
+        return view('welcome')->with($data);
+    }
+
     function index(){
         return view('layouts/admin/login_view');
     }
@@ -66,6 +72,10 @@ class UserController
         if ($res){
             return redirect('user/logout');
         }
+    }
+
+    function contact(){
+        return view('layouts/user/contact');
     }
 
 

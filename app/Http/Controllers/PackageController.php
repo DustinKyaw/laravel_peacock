@@ -21,6 +21,19 @@ class PackageController
         $this->service = new ServiceModel();
     }
 
+    function select_packages(){
+        $res['package']= $this->package->get_packages();
+        return view('layouts/user/package_view')->with($res);
+    }
+
+    function show_package($id){
+        $data['service']= $this->service->get_services();
+        $data['package'] = $this->package->search_by_id($id);
+        if ($data['package']){
+            return view('layouts/user/package_detail_view')->with($data);
+        }
+    }
+
     function index(){
         $res['package']= $this->package->get_packages();
         $res['service']= $this->service->get_services();
@@ -61,7 +74,6 @@ class PackageController
             return redirect('user/packages');
         }
     }
-
 
 
 }
