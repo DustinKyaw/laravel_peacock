@@ -25,15 +25,6 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href='https://mmwebfonts.comquas.com/fonts/?font=pyidaungsu' />
 
-    <style type="text/css">
-
-        h2{
-            font-family:Pyidaungsu;
-        }
-        option {
-            font-family:Pyidaungsu;
-        }
-    </style>
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="{{URL::to('app-assets/css/animate.css')}}">
@@ -120,7 +111,7 @@
                                                     <div class="col-md-12">
                                                         <label for="activities">Packages</label>
 
-                                                        <select name="package_id" id="activities" class="form-control">
+                                                        <select name="package_id" id="activities" class="form-control" style="font-family:Pyidaungsu; padding: 20px;">
                                                             <option value="">Packages</option>
                                                             @foreach($package as $value)
                                                                 <option value="{{$value['id']}}">{{$value['title']}}</option>
@@ -189,7 +180,7 @@
                             <img src="{{URL::to('public/upload/'.$value['image'])}}" alt="Image" width="100%" height="100%">
                         </figure>
                         <div class="fh5co-text">
-                            <h2>{{$value['title']}}</h2>
+                            <h2 style="font-family:Pyidaungsu;">{{$value['title']}}</h2>
                             <p>Price - {{$value['amount']}} MMK</p>
                             <div class="row">
                                 <span class="btn btn-primary">See More</span>

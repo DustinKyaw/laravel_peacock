@@ -25,6 +25,7 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href='https://mmwebfonts.comquas.com/fonts/?font=pyidaungsu' />
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="{{URL::to('app-assets/css/animate.css')}}">
@@ -121,7 +122,7 @@
                             <img src="{{URL::to('public/upload/'.$value['image'])}}" alt="Image" width="100%" height="100%">
                         </figure>
                         <div class="fh5co-text">
-                            <h2>{{$value['title']}}</h2>
+                            <h2 style="font-family:Pyidaungsu;">{{$value['title']}}</h2>
                             <p>Price - {{$value['amount']}} MMK</p>
                             <div class="row">
                                     <span class="btn btn-primary">See More</span>

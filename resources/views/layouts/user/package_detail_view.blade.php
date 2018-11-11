@@ -26,6 +26,7 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href='https://mmwebfonts.comquas.com/fonts/?font=pyidaungsu' />
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="{{URL::to('app-assets/css/animate.css')}}">
@@ -93,7 +94,7 @@
                     <div class="row row-mt-15em">
 
                         <div class="col-md-12 mt-text text-lg-center animate-box" data-animate-effect="fadeInUp">
-                            <h1>{{$package['title']}}</h1>
+                            <h1 style="font-family:Pyidaungsu;">{{$package['title']}}</h1>
                         </div>
 
                     </div>
@@ -108,35 +109,35 @@
         <div class="gtco-container">
             <div class="row">
                 <div class="col-md-12 col-md-offset-2 gtco-heading">
-                    <h6>{{$package['title']}}</h6>
-                    <p style="font-size: medium">{{$package['description']}}</p>
-                    <h6>ပို့ဆောင်ပေးမည့်နေရာလေးတွေကတော့</h6>
+                    <h6 style="font-family:Pyidaungsu;">{{$package['title']}}</h6>
+                    <p style="font-size: medium; font-family:Pyidaungsu;">{{$package['description']}}</p>
+                    <h6 style="font-family:Pyidaungsu;">ပို့ဆောင်ပေးမည့်နေရာလေးတွေကတော့</h6>
                     <ul>
                         @foreach(explode(",", $package['route']) as $value)
-                            <li>{{$value}}</li>
+                            <li style="font-family:Pyidaungsu;">{{$value}}</li>
                         @endforeach
                     </ul>
 
 
-                    <h6>ပါဝင်မည့်ဝန်ဆောင်မှုလေးတွေကတော့</h6>
+                    <h6 style="font-family:Pyidaungsu;">ပါဝင်မည့်ဝန်ဆောင်မှုလေးတွေကတော့</h6>
 
                     <ul type="correct">
                         @foreach(explode(",", $package['services']) as $value)
-                            <li>{{$value}}</li>
+                            <li style="font-family:Pyidaungsu;">{{$value}}</li>
                         @endforeach
                     </ul>
 
 
-                    <h6>စထွက်မည့်နေ့ </h6>
-                    <i class="fa fa-calendar mb-2 ml-2" style="font-size: medium"> {{$package['start_date']}}</i>
+                    <h6 style="font-family:Pyidaungsu;">စထွက်မည့်နေ့ </h6>
+                    <i class="fa fa-calendar mb-2 ml-2" style="font-size: medium;" > {{$package['start_date']}}</i>
 
-                    <h6>ပြန်ရောက်မည့်နေ့ </h6>
+                    <h6 style="font-family:Pyidaungsu;">ပြန်ရောက်မည့်နေ့ </h6>
 
-                    <i class="fa fa-calendar mb-2 ml-2" style="font-size: medium"> {{$package['end_date']}}</i>
+                    <i class="fa fa-calendar mb-2 ml-2" style="font-size: medium;"> {{$package['end_date']}}</i>
 
-                    <h6>စျေးနှုန်း </h6>
+                    <h6 style="font-family:Pyidaungsu;">စျေးနှုန်း </h6>
 
-                    <i class="fa fa-money mb-2 ml-2" style="font-size: medium">  {{$package['amount']}} ကျပ်</i>
+                    <i class="fa fa-money mb-2 ml-2" style="font-size: medium;">  {{$package['amount']}} ကျပ်</i>
 
                     <h6>Order here</h6>
                     <form action="{{URL::to('packages/booking')}}" class="col-md-6" method="post">
