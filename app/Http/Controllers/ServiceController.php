@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 use App\ServiceModels\ServiceModel;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class ServiceController
 {
@@ -20,8 +21,13 @@ class ServiceController
     }
 
     function index(){
-        $data['services'] = $this->service->get_services();
-        return view('layouts/admin/service_list')->with($data);
+        if (Session::get('user')){
+            $data['services'] = $this->service->get_services();
+            return view('layouts/admin/service_list')->with($data);
+        }else{
+            return redirect('error');
+        }
+
     }
 
     function create(){

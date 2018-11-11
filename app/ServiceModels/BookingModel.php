@@ -23,4 +23,20 @@ class BookingModel
         return $booking->save();
     }
 
+    function get_bookings(){
+        $res = Booking::with('package')->where('status', 1)->orderBy('id','DESC')->get();
+        return $res;
+    }
+
+    function delete_booking($id){
+        $booking = Booking::where('id', $id)->get()->first();
+        $booking->status = 0;
+        return $booking->save();
+    }
+
+    function get_bookings_count(){
+        $data = Booking::where('status', 1)->get()->count();
+        return $data;
+    }
+
 }

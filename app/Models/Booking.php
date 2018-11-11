@@ -16,4 +16,9 @@ class Booking extends Model
     public $incrementing = false;
     protected $table = 'booking';
     protected $fillable = ['id', 'name', 'phno', 'address', 'package_id'];
+
+    public function package()
+    {
+        return $this->belongsTo('App\Models\Package','package_id');
+    }
 }

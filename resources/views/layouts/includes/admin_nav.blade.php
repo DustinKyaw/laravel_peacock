@@ -49,7 +49,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ URL::to('user/request') }}">
+                <a href="{{ URL::to('user/request_list') }}">
                     <i class="icon-bookmark"></i>
                     <span data-i18n="nav.dash.main" class="menu-title">Request List</span>
                 </a>
@@ -63,7 +63,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{ URL::to('user/booking') }}">
+                <a href="{{ URL::to('user/booking_list') }}">
                     <i class="icon-book3"></i>
                     <span data-i18n="nav.dash.main" class="menu-title">Booking List</span>
                 </a>

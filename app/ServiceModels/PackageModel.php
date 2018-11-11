@@ -23,6 +23,7 @@ class PackageModel
         $package->description = $data['desc'];
         $package->route = $data['routes'];
         $package->amount = $data['amount'];
+        $package->image = $data['image'];
         $package->start_date = $data['start_date'];
         $package->end_date = $data['end_date'];
         $package->services = $services;
@@ -30,7 +31,7 @@ class PackageModel
     }
 
     function get_packages(){
-        $data = Package::where('status', 1)->get()->toArray();
+        $data = Package::where('status', 1)->orderBy('created_at','desc')->get()->toArray();
         return $data;
     }
 
@@ -51,6 +52,7 @@ class PackageModel
     }
 
     function edit_package($data){
+
         $package = Package::where('id', $data['id'])->get()->first();
         $services = implode(',', $data['services']);
         $package->title = $data['title'];
@@ -60,6 +62,9 @@ class PackageModel
         $package->start_date = $data['start_date'];
         $package->end_date = $data['end_date'];
         $package->services = $services;
+        if (!empty($data['image'])){
+            $package->image =$data['image'];
+        }
 
         return $package->save();
     }

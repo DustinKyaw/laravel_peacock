@@ -46,6 +46,11 @@ class UserModel
         return $user->save();
     }
 
+    function get_user_count(){
+        $data = User::get()->count();
+        return $data;
+    }
+
 
 
 }

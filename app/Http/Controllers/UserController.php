@@ -8,8 +8,12 @@
 
 namespace App\Http\Controllers;
 
+use App\ServiceModels\BookingModel;
 use App\ServiceModels\PackageModel;
+use App\ServiceModels\RequestModel;
+use App\ServiceModels\ServiceModel;
 use App\ServiceModels\UserModel;
+use App\User;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
@@ -19,6 +23,10 @@ class UserController
     {
         $this->user = new UserModel();
         $this->package = new PackageModel();
+        $this->booking = new BookingModel();
+        $this->request = new RequestModel();
+        $this->user = new UserModel();
+        $this->service = new ServiceModel();
     }
 
     function home(){
@@ -32,8 +40,17 @@ class UserController
     }
 
     function dashboard(){
-        $data['package_count'] = $this->package->get_packages_count();
-        return view('layouts/admin/dashboard')->with($data);
+        if (Session::get('user')){
+            $data['package_count'] = $this->package->get_packages_count();
+            $data['booking_count'] = $this->booking->get_bookings_count();
+            $data['request_count'] = $this->request->get_requests_count();
+            $data['user_count'] = $this->user->get_user_count();
+            $data['service_count'] = $this->service->get_service_count();
+            return view('layouts/admin/dashboard')->with($data);
+        }else{
+            return redirect('error');
+        }
+
     }
 
 
@@ -52,8 +69,14 @@ class UserController
     }
 
     function show(){
-        $data['user'] = $this->user->get_all_user();
-        return view('layouts/admin/admin_profile')->with($data);
+        if (Session::get('user')){
+            $data['user'] = $this->user->get_all_user();
+            return view('layouts/admin/admin_profile')->with($data);
+        }else{
+            return redirect('error');
+        }
+
+
     }
 
     function create(){

@@ -27,7 +27,7 @@ $single_master=Config::get('app_config.blade.single_master');
                         <div class="card-block">
 
                             <div class="container">
-                                        <form action="{{URL::to('user/create_package')}}" method="post" class="needs-validation" novalidate>
+                                        <form action="{{URL::to('user/create_package')}}" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                             <div class="row">
@@ -84,6 +84,25 @@ $single_master=Config::get('app_config.blade.single_master');
                                                             <input type="checkbox" class="form-check-input" name="services[]" value="{{$value['name']}}"> {{$value['name']}}
                                                         </label>
                                                     @endforeach
+                                                </div>
+                                            </div>
+
+                                            <div style="margin-top:20px">
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label style="color: #546e7a;">Image Upload: </label>
+                                                            <input type="file" name="image" class="fileinput" onchange="readURL(this);"/>
+                                                            <br/>
+                                                        </div>
+                                                        <div class="col-md-5"></div>
+                                                        <div class="col-md-4">
+                                                            <img id="img" src="/uploads" width="300px" height="200px" class="img-responsive" />
+
+                                                            <br/>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
 
@@ -178,6 +197,19 @@ $single_master=Config::get('app_config.blade.single_master');
                 todayBtn: true
             });
         });
+
+        function readURL(input)
+        {
+            if(input.files&&input.files[0])
+            {
+                var reader=new FileReader();
+                reader.onload=function (e)
+                {
+                    $('#img').attr('src',e.target.result).width(150).height(200);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
     </script>
 

@@ -31,4 +31,9 @@ class ServiceModel
         return $service->save();
     }
 
+    function get_service_count(){
+        $data = Service::get()->count();
+        return $data;
+    }
+
 }

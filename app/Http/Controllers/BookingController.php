@@ -30,4 +30,23 @@ class BookingController
         }
     }
 
+    function get_all(){
+        if (Session::get('user')){
+            $data['booking'] = $this->booking->get_bookings();
+
+            return view('layouts/admin/booking_list')->with($data);
+        }else{
+            return redirect('error');
+        }
+
+    }
+
+    function delete($id){
+
+        $res = $this->booking->delete_booking($id);
+        if ($res){
+            return redirect()->back();
+        }
+    }
+
 }

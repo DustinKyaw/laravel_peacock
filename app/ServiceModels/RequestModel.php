@@ -23,4 +23,21 @@ class RequestModel
         return $request->save();
     }
 
+    function get_requests(){
+        $res = Request::where('status', 1)->orderBy('id','DESC')->get();
+        return $res;
+    }
+
+    function delete_request($id){
+        $request = Request::where('id', $id)->get()->first();
+        $request->status = 0;
+        return $request->save();
+    }
+
+
+    function get_requests_count(){
+        $data = Request::where('status', 1)->get()->count();
+        return $data;
+    }
+
 }

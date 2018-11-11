@@ -23,6 +23,17 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href='https://mmwebfonts.comquas.com/fonts/?font=pyidaungsu' />
+
+    <style type="text/css">
+
+        h2{
+            font-family:Pyidaungsu;
+        }
+        option {
+            font-family:Pyidaungsu;
+        }
+    </style>
 
     <!-- Animate.css -->
     <link rel="stylesheet" href="{{URL::to('app-assets/css/animate.css')}}">
@@ -50,6 +61,7 @@
     <script src="{{URL::to('app-assets/js/modernizr-2.6.2.min.js')}}"></script>
 
     <script src="{{URL::to('app-assets/js/respond.min.js')}}"></script>
+
 
 </head>
 <body>
@@ -174,7 +186,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <a href="{{URL::to('packages/'.$value['id'])}}" class="fh5co-card-item">
                         <figure>
-                            <img src="{{URL::to('images/background.jpg')}}" alt="Image" width="100%" height="100%">
+                            <img src="{{URL::to('public/upload/'.$value['image'])}}" alt="Image" width="100%" height="100%">
                         </figure>
                         <div class="fh5co-text">
                             <h2>{{$value['title']}}</h2>

@@ -27,8 +27,9 @@ $single_master=Config::get('app_config.blade.single_master');
                         <div class="card-block">
 
                             <div class="container">
-                                <form action="{{URL::to('user/packages/edit/'.$package['id'])}}" method="post" class="needs-validation" novalidate>
+                                <form action="{{URL::to('user/packages/edit')}}" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                    <input type="hidden" name="id" value="{{ $package['id']}}">
 
                                     <div class="row">
                                         <div class="col-md-6">
@@ -87,6 +88,17 @@ $single_master=Config::get('app_config.blade.single_master');
                                         </div>
                                     </div>
 
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label for="inp_image">Image</label>
+                                            <input type="file" name="image" class="fileinput" onchange="readURL(this);"/>
+                                        </div>
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-6">
+                                            <img id="img" src="{{URL::to('public/upload/'.$package['image'])}}" width="300px" height="200px" class="img-responsive" />
+                                        </div>
+                                    </div>
+
                                     <button style="margin-top: 20px" type="submit" class="btn btn-success">Create</button>
                                 </form>
                             </div>
@@ -140,6 +152,21 @@ $single_master=Config::get('app_config.blade.single_master');
                 todayBtn: true
             });
         });
+
+        function readURL(input)
+        {
+
+            if(input.files&&input.files[0])
+            {
+                var reader=new FileReader();
+                reader.onload=function (e)
+                {
+
+                    $('#img').attr('src',e.target.result).width(150).height(200);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
     </script>
 

@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\ServiceModels\PackageModel;
 use App\ServiceModels\ServiceModel;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class PackageController
 {
@@ -22,27 +23,48 @@ class PackageController
     }
 
     function select_packages(){
-        $res['package']= $this->package->get_packages();
-        return view('layouts/user/package_view')->with($res);
+            $res['package']= $this->package->get_packages();
+            return view('layouts/user/package_view')->with($res);
     }
 
     function show_package($id){
-        $data['service']= $this->service->get_services();
-        $data['package'] = $this->package->search_by_id($id);
-        if ($data['package']){
-            return view('layouts/user/package_detail_view')->with($data);
-        }
+            $data['service']= $this->service->get_services();
+            $data['package'] = $this->package->search_by_id($id);
+            if ($data['package']){
+                return view('layouts/user/package_detail_view')->with($data);
+            }
     }
 
     function index(){
-        $res['package']= $this->package->get_packages();
-        $res['service']= $this->service->get_services();
-        return view('layouts/admin/packages')->with($res);
+
+        if (Session::get('user')){
+            $res['package']= $this->package->get_packages();
+            $res['service']= $this->service->get_services();
+            return view('layouts/admin/packages')->with($res);
+        }else{
+            return redirect('error');
+        }
+
+
     }
 
-    function create(){
+    function create(Request $request){
         $data = Input::get();
-        //dd($data);
+        $file= "";
+        $file_name="";
+        if (!empty($request['image'])) {
+            $file= $request->file('image');
+            //dd($file);
+        }
+
+        if($file != null)
+        {
+            $extension=$file->getClientOriginalExtension();
+            $file_name = rand(111111111,999999999).'.'.$extension;
+            $file->move('public/upload/', $file_name);
+        }
+
+        $data['image'] = $file_name;
         $res = $this->package->create_package($data);
         if ($res){
             return redirect()->back();
@@ -59,16 +81,36 @@ class PackageController
     }
 
     function display($id){
-        $data['service']= $this->service->get_services();
-        $data['package'] = $this->package->search_by_id($id);
-        if ($data['package']){
-            return view('layouts/admin/package_details')->with($data);
+        if (Session::get('user')){
+            $data['service']= $this->service->get_services();
+            $data['package'] = $this->package->search_by_id($id);
+            if ($data['package']){
+                return view('layouts/admin/package_details')->with($data);
+            }
+        }else{
+            return redirect('error');
         }
+
     }
 
-    function edit($id){
+    function edit(Request $request){
         $data = Input::get();
-        $data['id'] = $id;
+        $file= "";
+        $file_name="";
+        if (!empty($request['image'])) {
+            $file= $request->file('image');
+            //dd($file);
+        }
+
+        if($file != null)
+        {
+            $extension=$file->getClientOriginalExtension();
+            $file_name = rand(111111111,999999999).'.'.$extension;
+            $file->move('public/upload/', $file_name);
+        }
+
+        $data['image'] = $file_name;
+        $data['id'] = $request['id'];
         $res = $this->package->edit_package($data);
         if ($res){
             return redirect('user/packages');

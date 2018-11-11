@@ -85,7 +85,7 @@
         </div>
     </nav>
 
-    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url({{URL::to('images/beach.jpg')}})">
+    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url({{URL::to('public/upload/'.$package['image'])}})">
         <div class="overlay"></div>
         <div class="gtco-container">
             <div class="row">

@@ -26,6 +26,11 @@ Route::post('request_package', 'RequestController@create');
 Route::get('contact_us', 'UserController@contact');
 
 
+Route::get('error', function (){
+    return view('layouts/user/error');
+});
+
+
 Route::get('user/login', 'UserController@index');
 
 Route::post('user/login', 'UserController@login');
@@ -62,5 +67,13 @@ Route::get('user/package_delete/{id}', 'PackageController@delete');
 
 Route::get('user/packages/details/{id}', 'PackageController@display');
 
-Route::post('user/packages/edit/{id}', 'PackageController@edit');
+Route::post('user/packages/edit/', 'PackageController@edit');
+
+Route::get('user/booking_list', 'BookingController@get_all');
+
+Route::get('user/booking_delete/{id}', 'BookingController@delete');
+
+Route::get('user/request_list', 'RequestController@get_all');
+
+Route::get('user/request_delete/{id}', 'RequestController@delete');
 

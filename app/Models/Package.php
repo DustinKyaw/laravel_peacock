@@ -15,7 +15,7 @@ class Package extends Model
 {
     public $incrementing = false;
     protected $table= "packages";
-    protected $fillable =['id', 'title', 'description', 'route', 'amount', 'start_date', 'end_date', 'services', 'status'];
+    protected $fillable =['id', 'title', 'description', 'route', 'amount','image', 'start_date', 'end_date', 'services', 'status'];
 
 
 }

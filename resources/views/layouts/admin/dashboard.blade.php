@@ -1,4 +1,5 @@
 <?php
+
 $single_master=Config::get('app_config.blade.single_master');
 
 ?>
@@ -22,7 +23,7 @@ $single_master=Config::get('app_config.blade.single_master');
                                 <div class="card-block">
                                     <div class="media">
                                         <div class="media-body text-xs-left">
-                                            <h3 class="pink">10</h3>
+                                            <h3 class="pink">{{$booking_count}}</h3>
                                             <span>Package Booking List</span>
                                         </div>
                                         <div class="media-right media-middle">
@@ -39,7 +40,7 @@ $single_master=Config::get('app_config.blade.single_master');
                                 <div class="card-block">
                                     <div class="media">
                                         <div class="media-body text-xs-left">
-                                            <h3 class="teal">10</h3>
+                                            <h3 class="teal">{{$request_count}}</h3>
                                             <span>Custom Request List</span>
                                         </div>
                                         <div class="media-right media-middle">
@@ -69,77 +70,42 @@ $single_master=Config::get('app_config.blade.single_master');
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Package Booking List</h4>
-                        <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-                    </div>
-                    <div class="card-body collapse in">
-                        <div class="card-block">
-                            <div class="table-responsive">
-                                <table id="example" class="display nowrap" cellspacing="0" width="100%">
-                                    <thead>
-                                    <th>Booking No.</th>
-                                    <th>User Name</th>
-                                    <th>DATE</th>
-                                    <th>Package</th>
-                                    <th>Details</th>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>PK-0001</td>
-                                        <td>Zwe Mun Htun</td>
-                                        <td>20/11/2018</td>
-                                        <td>တောင်ကြီး - ကလော</td>
-                                        <td >
-                                            <a href="#" class="btn btn-xs btn-info pull-right">Details</a>
-                                            <a href="#"><button class="btn btn-danger btn-md" onclick="return confirm('Are you sure want to delete ? ')">Delete</button></a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-xs-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <div class="media">
+                                        <div class="media-body text-xs-left">
+                                            <h3 class="pink">{{$user_count}}</h3>
+                                            <span>User Count List</span>
+                                        </div>
+                                        <div class="media-right media-middle">
+                                            <i class="icon-user pink font-large-2 float-xs-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-xs-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <div class="media">
+                                        <div class="media-body text-xs-left">
+                                            <h3 class="teal">{{$service_count}}</h3>
+                                            <span>Service Count List</span>
+                                        </div>
+                                        <div class="media-right media-middle">
+                                            <i class="icon-server red font-large-2 float-xs-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Car Rental List</h4>
-                        <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
-                    </div>
-                    <div class="card-body collapse in">
-                        <div class="card-block">
-                            <div class="table-responsive">
-                                <table id="rental" class="display nowrap" cellspacing="0" width="100%">
-                                    <thead>
-                                    <th>Booking No.</th>
-                                    <th>User Name</th>
-                                    <th>DATE</th>
-                                    <th>Package</th>
-                                    <th>Details</th>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>PK-0001</td>
-                                        <td>Zwe Mun Htun</td>
-                                        <td>20/11/2018</td>
-                                        <td>တောင်ကြီး - ကလော</td>
-                                        <td >
-                                            <a href="#" class="btn btn-xs btn-info pull-right">Details</a>
-                                            <a href="#"><button class="btn btn-danger btn-md" onclick="return confirm('Are you sure want to delete ? ')">Delete</button></a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
         </div>
     </div>
 

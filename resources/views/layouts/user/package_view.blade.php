@@ -1,3 +1,6 @@
+<?php
+//dd($package);
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -115,7 +118,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <a href="{{URL::to('packages/'.$value['id'])}}" class="fh5co-card-item">
                         <figure>
-                            <img src="{{URL::to('images/background.jpg')}}" alt="Image" width="100%" height="100%">
+                            <img src="{{URL::to('public/upload/'.$value['image'])}}" alt="Image" width="100%" height="100%">
                         </figure>
                         <div class="fh5co-text">
                             <h2>{{$value['title']}}</h2>
